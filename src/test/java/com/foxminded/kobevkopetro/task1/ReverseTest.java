@@ -5,10 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ReverseTest {
-
+    
     @Test
-    public void testMain() {
-        assertEquals("olleH !dlroW", Reverse.reverse("Hello World!"));
+    public void testReverse() {
+        assertEquals("d1cba hgf!e", Reverse.reverse("a1bcd efg!h"));
     }
-
 }
