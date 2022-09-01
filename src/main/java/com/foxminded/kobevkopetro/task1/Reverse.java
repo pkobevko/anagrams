@@ -3,6 +3,8 @@ package com.foxminded.kobevkopetro.task1;
 import java.util.StringJoiner;
 
 public class Reverse {
+    
+    private static final String REGEX_ONLY_LETTERS = "[^a-zA-Z]";
 
     public Reverse() {
 
@@ -20,9 +22,7 @@ public class Reverse {
     }
 
     public static String reverseWord(String word) {
-        String pattern = "[^a-zA-Z]";
-        
-        String reversedOnlyLetterWord = new StringBuilder(word).reverse().toString().replaceAll(pattern, "");
+        String reversedOnlyLetterWord = new StringBuilder(word).reverse().toString().replaceAll(REGEX_ONLY_LETTERS, "");
         String reversedWord = "";
 
         for (int i = 0; i < reversedOnlyLetterWord.length(); i++) {
