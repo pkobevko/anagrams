@@ -1,39 +1,39 @@
 package com.foxminded.kobevkopetro.task1;
 
+import java.util.StringJoiner;
+
 public class Reverse {
-    
+
     public Reverse() {
-        
+
     }
-    
-    public String reverse(String input) {
-        
-        String inputWords[] = input.split(" ");
-        String outputWords[] = new String[inputWords.length];
-        String pattern = "[^a-zA-Z]";
-        int k = 0;
-        
-        
-        for (String inputWord : inputWords) {
-            int j = 0;
-            
-            String reversedOnlyLetterWord = new StringBuilder(inputWord).reverse().toString().replaceAll(pattern, "");
-            String reversedWord = "";
-            
-            for (int i = 0; i < reversedOnlyLetterWord.length(); i++) {
-                if (Character.isLetter(inputWord.charAt(j))) {
-                    reversedWord += reversedOnlyLetterWord.charAt(i);
-                    j++;
-                } else {
-                    reversedWord += inputWord.charAt(j);
-                    reversedWord += reversedOnlyLetterWord.charAt(i);
-                    j++;
-                }
-            }
-            outputWords[k] = reversedWord;
-            k++;
+
+    public String reversePhrase(String input) {
+        String wordsArray[] = input.split(" ");
+        StringJoiner result = new StringJoiner(" ");
+
+        for (String word : wordsArray) {
+            result.add(reverseWord(word));
         }
         
-        return String.join(" ", outputWords);
+        return result.toString();
+    }
+
+    public static String reverseWord(String word) {
+        String pattern = "[^a-zA-Z]";
+        
+        String reversedOnlyLetterWord = new StringBuilder(word).reverse().toString().replaceAll(pattern, "");
+        String reversedWord = "";
+
+        for (int i = 0; i < reversedOnlyLetterWord.length(); i++) {
+            if (Character.isLetter(word.charAt(i))) {
+                reversedWord += reversedOnlyLetterWord.charAt(i);
+            } else {
+                reversedWord += word.charAt(i);
+                reversedWord += reversedOnlyLetterWord.charAt(i);
+            }
+        }
+        
+        return reversedWord;
     }
 }
