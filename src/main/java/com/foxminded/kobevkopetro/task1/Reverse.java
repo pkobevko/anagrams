@@ -2,21 +2,22 @@ package com.foxminded.kobevkopetro.task1;
 
 public class Reverse {
     
-    public static void main(String[] args) {
+    public Reverse() {
         
-        System.out.println(reverse("a1bcd efg!h"));
     }
-
-    public static String reverse(String input) {
+    
+    public String reverse(String input) {
         
         String inputWords[] = input.split(" ");
         String outputWords[] = new String[inputWords.length];
+        String pattern = "[^a-zA-Z]";
         int k = 0;
+        
         
         for (String inputWord : inputWords) {
             int j = 0;
             
-            String reversedOnlyLetterWord = new StringBuilder(inputWord).reverse().toString().replaceAll("[^a-zA-Z]", "");
+            String reversedOnlyLetterWord = new StringBuilder(inputWord).reverse().toString().replaceAll(pattern, "");
             String reversedWord = "";
             
             for (int i = 0; i < reversedOnlyLetterWord.length(); i++) {
