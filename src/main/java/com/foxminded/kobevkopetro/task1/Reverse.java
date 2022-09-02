@@ -1,25 +1,22 @@
 package com.foxminded.kobevkopetro.task1;
 
-import java.util.Arrays;
-import java.util.StringJoiner;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Reverse {
-    
+
     private static final String REGEX_ONLY_LETTERS = "[^a-zA-Z]";
-
-    public Reverse() {
-
-    }
 
     public String reversePhrase(String input) {
         String wordsArray[] = input.split(" ");
-        StringJoiner result = new StringJoiner(" ");
         
-        Stream<String> stream = Arrays.stream(wordsArray);
-        stream.forEach(str -> result.add(reverseWord(str)));
+        for (int i = 0; i < wordsArray.length; i++) {
+            wordsArray[i] = reverseWord(wordsArray[i]);
+        }
         
-        return result.toString();
+        String joinedString = Stream.of(wordsArray).collect(Collectors.joining(" "));
+        return joinedString;
+
     }
 
     private String reverseWord(String word) {
@@ -34,7 +31,7 @@ public class Reverse {
                 reversedWord += reversedOnlyLetterWord.charAt(i);
             }
         }
-        
+
         return reversedWord;
     }
 }
