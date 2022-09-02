@@ -6,17 +6,10 @@ import java.util.stream.Stream;
 public class Reverse {
 
     private static final String REGEX_ONLY_LETTERS = "[^a-zA-Z]";
+    private static final String SEPARATOR = " ";
 
     public String reversePhrase(String input) {
-        String wordsArray[] = input.split(" ");
-        
-        for (int i = 0; i < wordsArray.length; i++) {
-            wordsArray[i] = reverseWord(wordsArray[i]);
-        }
-        
-        String joinedString = Stream.of(wordsArray).collect(Collectors.joining(" "));
-        return joinedString;
-
+        return Stream.of(input.split(SEPARATOR)).map(word -> reverseWord(word)).collect(Collectors.joining(SEPARATOR));
     }
 
     private String reverseWord(String word) {
