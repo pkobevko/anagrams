@@ -10,7 +10,11 @@ public class Reverse {
 
     public String reversePhrase(String input) {
         if (input == null) {
-            throw new IllegalArgumentException("Illegal Argument");
+            throw new IllegalArgumentException("IllegalArgumentException");
+        }
+
+        if (input.trim().length() == 0) {
+            return input;
         }
 
         return Stream.of(input.split(SEPARATOR)).map(word -> reverseWord(word)).collect(Collectors.joining(SEPARATOR));
@@ -20,12 +24,14 @@ public class Reverse {
         String reversedOnlyLetterWord = new StringBuilder(word).reverse().toString().replaceAll(REGEX_ONLY_LETTERS, "");
         String reversedWord = "";
 
-        for (int i = 0; i < reversedOnlyLetterWord.length(); i++) {
+        int reversedWordIndex = 0;
+
+        for (int i = 0; i < word.length(); i++) {
             if (Character.isLetter(word.charAt(i))) {
-                reversedWord += reversedOnlyLetterWord.charAt(i);
+                reversedWord += reversedOnlyLetterWord.charAt(reversedWordIndex);
+                reversedWordIndex++;
             } else {
                 reversedWord += word.charAt(i);
-                reversedWord += reversedOnlyLetterWord.charAt(i);
             }
         }
 
