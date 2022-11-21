@@ -10,10 +10,10 @@ public class Reverse {
 
     public String reversePhrase(String input) {
         if (input == null) {
-            throw new IllegalArgumentException("IllegalArgumentException");
+            throw new IllegalArgumentException("You cannot pass null to this function");
         }
 
-        if (input.trim().length() == 0) {
+        if (input.isBlank()) {
             return input;
         }
 

@@ -9,49 +9,70 @@ class ReverseTest {
 
     @Test
     void reversePhrase_shouldThrowIllegalArgumentException_whenPassingNull() {
-        Assertions.assertThrows(IllegalArgumentException.class,
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class,
             () -> {
                 reverse.reversePhrase(null);
             });
+
+        String expectedMessage = "You cannot pass null to this function";
+        String actualMessage = exception.getMessage();
+
+        Assertions.assertEquals(actualMessage, expectedMessage);
     }
 
     @Test
     void reversePhrase_shouldReturnEmptyString_whenInputStringContainsEmptyString() {
-        Assertions.assertEquals("", reverse.reversePhrase(""));
+        String expected = "";
+        String actual = reverse.reversePhrase("");
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void reversePhrase_shouldReturnSingleSpace_whenInputStringContainsSingleSpace() {
-        Assertions.assertEquals(" ", reverse.reversePhrase(" "));
+        String expected = " ";
+        String actual = reverse.reversePhrase(" ");
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void reversePhrase_shouldReturnSameAmountOfSpaces_whenInputStringContainsOnlySpaces() {
-        Assertions.assertEquals("       ", reverse.reversePhrase("       "));
+        String expected = "       ";
+        String actual = reverse.reversePhrase("       ");
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void reversePhrase_shouldReturnThatCharacter_whenInputStringContainsSingleCharacter() {
-        Assertions.assertEquals("!", reverse.reversePhrase("!"));
+        String expected = "!";
+        String actual = reverse.reversePhrase("!");
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void reversePhrase_shouldReturnStringWithoutChanges_whenInputStringContainsMultipleSameLetter() {
-        Assertions.assertEquals("kkkkkkk", reverse.reversePhrase("kkkkkkk"));
+        String expected = "kkkkkkk";
+        String actual = reverse.reversePhrase("kkkkkkk");
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    void reverePhrase_shouldWorkCorrect_whenInputStringEndsWithNumber() {
-        Assertions.assertEquals("tset3", reverse.reversePhrase("test3"));
+    void reverePhrase_shouldWorkCorrect_whenInputStringEndsWithSymbol() {
+        String expected = "tset3";
+        String actual = reverse.reversePhrase("test3");
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void reversePhrase_shouldWorkCorrect_whenInputStringContainsStringWithSeveralSymbolsInRow() {
-        Assertions.assertEquals("ts333u!!!j g444nit!!!set", reverse.reversePhrase("ju333s!!!t t444est!!!ing"));
+        String expected = "ts333u!!!j g444nit!!!set";
+        String actual = reverse.reversePhrase("ju333s!!!t t444est!!!ing");
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void reversePhrase_shouldReturnStringWithoutChanges_whenInputStringContainsOnlySymbols() {
-        Assertions.assertEquals("!!!???111222333;;;", reverse.reversePhrase("!!!???111222333;;;"));
+        String expected = "!!!???111222333;;;";
+        String actual = reverse.reversePhrase("!!!???111222333;;;");
+        Assertions.assertEquals(expected, actual);
     }
 }
