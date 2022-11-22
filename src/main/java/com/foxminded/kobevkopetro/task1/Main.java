@@ -10,7 +10,7 @@ public class Main {
             System.out.print("Enter your text: ");
             String input = scanner.nextLine();
 
-            System.out.print("Result: " + new Reverse().reversePhrase(input) + "\n");
+            System.out.println("Result: " + new Reverse().reversePhrase(input));
         }
     }
 }
